@@ -1,5 +1,6 @@
+import createHttpError from "http-errors";
 import { ONE_DAY } from "../constants/index.js";
-import { registerUser, loginUser, logoutUser, refreshUsersSession, requestResetToken } from "../services/auth.js";
+import { registerUser, loginUser, logoutUser, refreshUsersSession, requestResetToken, resetPassword } from "../services/auth.js";
 
 
 export const registerUserController = async (req, res) => {
@@ -76,10 +77,32 @@ export const refreshUserSessionController = async (req, res) => {
 
 
 export const requestResetEmailController = async (req, res) => {
-    await requestResetToken(req.body.email);
-    res.json({
-        status: 200,
-        message: 'Reset password email was successfully sent!',
-        data: {},
-    });
+    try {
+        await requestResetToken(req.body.email);
+        res.json({
+            status: 200,
+            message: 'Reset password email was successfully sent!',
+            data: {},
+        });
+    } catch (error) {
+  console.error('Email send failed:', error);
+  throw createHttpError(500, 'Failed to send email');
+}
+};
+
+
+export const resetPasswordController = async (req, res) => {
+    try {
+        await resetPassword(req.body);
+        res.json({
+            message: 'Password was successfully reset!',
+            status: 200,
+            data: {},
+        });
+    } catch (error) {
+        if (error.name === "TokenExpiredError" || error.name === "JsonWebTokenError") {
+            throw createHttpError(401, 'Token is expired or invalid.');
+        }
+        throw error;
+    }
 };
