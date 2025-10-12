@@ -7,8 +7,8 @@ import fs from "node:fs/promises";
 cloudinary.v2.config({
     secure: true,
     cloud_name: getEnvVar(CLOUDINARY.CLOUD_NAME),
-    api_key: getEnvVar(CLOUDINARY.CLOUD_API_KEY),
-    api_secret: getEnvVar(CLOUDINARY.CLOUD_API_SECRET),
+    api_key: getEnvVar(CLOUDINARY.API_KEY),
+    api_secret: getEnvVar(CLOUDINARY.API_SECRET),
 });
 
 
