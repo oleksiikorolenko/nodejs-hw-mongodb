@@ -33,8 +33,8 @@ export const getAllContacts = async ({page, perPage, sortBy, sortOrder,filter, u
   };
 };
 
-export const getContactById = async (contactId, userId) => {
-  const contact = await ContactsCollection.findById(contactId, userId);
+export const getContactById = async (contactId) => {
+  const contact = await ContactsCollection.findById(contactId);
   return contact;
 };
 
