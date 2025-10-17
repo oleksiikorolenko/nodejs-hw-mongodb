@@ -17,33 +17,33 @@ requestBody:
           - contactType
         properties:
           name:
-    type: string
-    description: Contact name
-    example: John Doe
-  phoneNumber:
-    type: string
-    description: Contact phone number
-    example: +380000000000
-  email:
-    type: string
-    description: Contact email
-    example: johndoe@mail.com
-  isFavourite:
-    type: boolean
-    description: Contact is favourite
-    default: false
-    example: true
-  contactType:
-    type: string
-    description: Contact type
-    enum: ['work', 'home', 'personal']
-    example: work
-  photo:
-    type: string
-    description: Contact photo
-    default: null
-    example: https://res.cloudinary.com/dha4xvgfi/image/upload/v1759947947/aclxd7sbpsrb8hviowbe.jpg
-
+           type: string
+           description: Contact name
+           example: John Doe
+          phoneNumber:
+            type: string
+            description: Contact phone number
+            example: +380000000000
+          email:
+            type: string
+            description: Contact email
+            example: johndoe@mail.com
+          isFavourite:
+            type: boolean
+            description: Contact is favourite
+            default: false
+            example: true
+          contactType:
+            type: string
+            description: Contact type
+            enum: ['work', 'home', 'personal']
+            example: work
+          photo:
+            type: string
+            format: binary
+            description: Contact photo
+            default: null
+            example: https://res.cloudinary.com/dha4xvgfi/image/upload/v1759947947/aclxd7sbpsrb8hviowbe.jpg
 responses:
   '201':
     description: Contact created successfully

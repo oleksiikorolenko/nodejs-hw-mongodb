@@ -8,9 +8,7 @@ const parseContactType = (type) => {
 const parseIsFavourite = (value) => {
     const isBoolean = typeof value === 'boolean';
     if (!isBoolean) return undefined;
-    // const isQuery = (value) => [true, false].includes(value);
-    // if (isQuery(value)) return value;
-
+    
     if (value === "true") {
         return { isFavourite: true };
     } else {
