@@ -1,0 +1,18 @@
+tags:
+  - Auth
+summary: Login user
+operationId: loginUser
+description: Authenticate user
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        $ref: ../../components/schemas/auth/login.yaml
+responses:
+  '200':
+    $ref: ../../components/responses/auth/200_login.yaml
+  '409':
+    $ref: ../../components/responses/409.yaml
